@@ -1,58 +1,71 @@
-package com.wq.study.java8.date;
+/** 
+* @Function： DateUtils.java 
+* @Description:TODO
+*
+*
+* @version: v1.0.0
+* @auther: GW00174103
+* @date: 2020年11月20日
+*
+* Modification History:
+* Date         Author          Version            Description
+*---------------------------------------------------------*
+* 2020年11月20日      GW00174103         v1.0.0             首次创建
+*/
+package com.ww.youxuan.utils;
 
-import java.time.Clock;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Month;
-import java.time.MonthDay;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
-import java.time.Period;
-import java.time.YearMonth;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-public class DateTest {
+/** 
+* @Title: DateUtils.java 
+* @Package com.ww.youxuan.utils 
+* @Description: TODO(用一句话描述该文件做什么) 
+* @author GW00174103 
+* @date 2020年11月20日 
+* @version V1.0 
+* @Function： DateUtils.java 
+* @Description:TODO
+*
+*
+* @version: v1.0.0
+* @auther: GW00174103
+* @date: 2020年11月20日下午3:40:25
+*
+* Modification History:
+* Date         Author          Version            Description
+*---------------------------------------------------------*
+* 2020年11月20日      GW00174103         v1.0.0             首次创建
+*/
+public class DateUtils {
 
+	public static void main(String[] args) {
+		new DateUtils().getTimestamp();
+	}
+	
     //获取今天的日期
-    public void getCurrentDate(){
+    public static LocalDate getCurrentDate(){
         LocalDate today = LocalDate.now();
-        System.out.println("Today's Local date : " + today);
-
-        //这个是作为对比
-        Date date = new Date();
-        System.out.println(date);
-    }
-
-    //获取年、月、日信息
-    public void getDetailDate(){
-        LocalDate today = LocalDate.now();
-        int year = today.getYear();
-        int month = today.getMonthValue();
-        int day = today.getDayOfMonth();
-
-        System.out.printf("Year : %d  Month : %d  day : %d t %n", year, month, day);
+        System.out.println(today);
+		return today;
     }
 
     //处理特定日期
-    public void handleSpecilDate(){
+    public static LocalDate handleSpecilDate(int year,int month,int dayofMonth){
         LocalDate dateOfBirth = LocalDate.of(2018, 01, 21);
-        System.out.println("The specil date is : " + dateOfBirth);
+        return dateOfBirth;
     }
 
     //判断两个日期是否相等
-    public void compareDate(){
-        LocalDate today = LocalDate.now();
-        LocalDate date1 = LocalDate.of(2018, 01, 21);
+    public static Boolean compareDate(LocalDate date1,LocalDate date2){
 
-        if(date1.equals(today)){
-            System.out.printf("TODAY %s and DATE1 %s are same date %n", today, date1);
+        if(date1.equals(date2)){
+            System.out.printf("date1 %s and date2 %s are same date %n", date1, date2);
+            return true;
         }
+        return false;
     }
 
     //处理周期性的日期
@@ -188,12 +201,6 @@ public class DateTest {
         String dayAfterTommorrow = "20180210";
         LocalDate formatted = LocalDate.parse(dayAfterTommorrow, DateTimeFormatter.BASIC_ISO_DATE);
         System.out.printf("Date generated from String %s is %s %n", dayAfterTommorrow, formatted);
-    }
-
-    public static void main(String[] args) {
-        DateTest dt = new DateTest();
-
-        dt.formateDate();
     }
 
 }
